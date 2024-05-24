@@ -5,7 +5,7 @@ import { Context } from '../../context/Context'
 
 const Main = () => {
 
-    const{onSent,recentPrompts,showResult,loading,resultData,setInput,input}=useContext(Context)
+    const{onSent,recentPrompt,showResult,loading,resultData,setInput,input}=useContext(Context)
   return (
     <div className='main'>
         <div className="nav">
@@ -44,7 +44,7 @@ const Main = () => {
             :<div className='result'>
                 <div className="result-title">
                     <img src={assets.user_icon} alt="" />
-                    <p>{recentPrompts}</p>
+                    <p>{recentPrompt}</p>
                 </div>
                 <div className="result-data">
                     <img src={assets.gemini_icon} alt="" />
@@ -66,11 +66,12 @@ const Main = () => {
             
             <div className="main-bottom">
                 <div className="search-box">
+                    
                     <input onChange={(e)=>setInput(e.target.value)} value={input} type="text" placeholder='Enter a Prompt here' />
                 <div>
                 <img src={assets.gallery_icon} alt="" />
                 <img src={assets.mic_icon} alt="" />
-                <img onClick={()=>onSent()}src={assets.send_icon} alt="" />
+               {input?<img onClick={()=>onSent()}src={assets.send_icon} alt="" /> : null} 
                 </div>
 
                 </div>
